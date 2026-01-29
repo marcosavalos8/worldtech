@@ -1,6 +1,9 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -16,7 +19,24 @@ export default function Home() {
               <a href="#nosotros" className="hover:text-red-500 transition">Nosotros</a>
               <a href="#contacto" className="hover:text-red-500 transition">Contacto</a>
             </div>
+            <button 
+              className="md:hidden text-white"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
           </div>
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-4 space-y-2">
+              <a href="#home" className="block hover:text-red-500 transition" onClick={() => setMobileMenuOpen(false)}>Inicio</a>
+              <a href="#servicios" className="block hover:text-red-500 transition" onClick={() => setMobileMenuOpen(false)}>Servicios</a>
+              <a href="#nosotros" className="block hover:text-red-500 transition" onClick={() => setMobileMenuOpen(false)}>Nosotros</a>
+              <a href="#contacto" className="block hover:text-red-500 transition" onClick={() => setMobileMenuOpen(false)}>Contacto</a>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -61,7 +81,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Service 1 */}
             <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition border-t-4 border-blue-600">
-              <div className="text-4xl mb-4 text-blue-600">💻</div>
+              <div className="text-4xl mb-4 text-blue-600" aria-hidden="true">💻</div>
               <h3 className="text-xl font-bold mb-3 text-blue-800">
                 Infraestructura y Equipos de Cómputo
               </h3>
@@ -72,7 +92,7 @@ export default function Home() {
 
             {/* Service 2 */}
             <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition border-t-4 border-red-600">
-              <div className="text-4xl mb-4 text-red-600">🔧</div>
+              <div className="text-4xl mb-4 text-red-600" aria-hidden="true">🔧</div>
               <h3 className="text-xl font-bold mb-3 text-blue-800">
                 Mantenimiento y Soporte TI
               </h3>
@@ -83,7 +103,7 @@ export default function Home() {
 
             {/* Service 3 */}
             <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition border-t-4 border-blue-600">
-              <div className="text-4xl mb-4 text-blue-600">🌐</div>
+              <div className="text-4xl mb-4 text-blue-600" aria-hidden="true">🌐</div>
               <h3 className="text-xl font-bold mb-3 text-blue-800">
                 Redes y Cableado Estructurado
               </h3>
@@ -94,7 +114,7 @@ export default function Home() {
 
             {/* Service 4 */}
             <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition border-t-4 border-red-600">
-              <div className="text-4xl mb-4 text-red-600">📹</div>
+              <div className="text-4xl mb-4 text-red-600" aria-hidden="true">📹</div>
               <h3 className="text-xl font-bold mb-3 text-blue-800">
                 Seguridad Electrónica (CCTV)
               </h3>
@@ -105,7 +125,7 @@ export default function Home() {
 
             {/* Service 5 */}
             <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition border-t-4 border-blue-600">
-              <div className="text-4xl mb-4 text-blue-600">💡</div>
+              <div className="text-4xl mb-4 text-blue-600" aria-hidden="true">💡</div>
               <h3 className="text-xl font-bold mb-3 text-blue-800">
                 Software y Soluciones Digitales
               </h3>
@@ -116,7 +136,7 @@ export default function Home() {
 
             {/* Service 6 */}
             <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition border-t-4 border-red-600">
-              <div className="text-4xl mb-4 text-red-600">📊</div>
+              <div className="text-4xl mb-4 text-red-600" aria-hidden="true">📊</div>
               <h3 className="text-xl font-bold mb-3 text-blue-800">
                 Consultoría Tecnológica
               </h3>
@@ -138,7 +158,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Mission */}
             <div className="text-center p-8 bg-blue-50 rounded-lg">
-              <div className="text-5xl mb-4 text-blue-600">🎯</div>
+              <div className="text-5xl mb-4 text-blue-600" aria-hidden="true">🎯</div>
               <h3 className="text-2xl font-bold mb-4 text-blue-800">Misión</h3>
               <p className="text-gray-700 leading-relaxed">
                 Proporcionar soluciones tecnológicas innovadoras y de alta calidad que impulsen el crecimiento y la transformación digital de nuestros clientes.
@@ -147,7 +167,7 @@ export default function Home() {
 
             {/* Vision */}
             <div className="text-center p-8 bg-red-50 rounded-lg">
-              <div className="text-5xl mb-4 text-red-600">👁️</div>
+              <div className="text-5xl mb-4 text-red-600" aria-hidden="true">👁️</div>
               <h3 className="text-2xl font-bold mb-4 text-blue-800">Visión</h3>
               <p className="text-gray-700 leading-relaxed">
                 Ser la empresa líder en soluciones de TI, reconocida por nuestra excelencia, innovación y compromiso con el éxito de nuestros clientes.
@@ -156,7 +176,7 @@ export default function Home() {
 
             {/* Values */}
             <div className="text-center p-8 bg-blue-50 rounded-lg">
-              <div className="text-5xl mb-4 text-blue-600">⭐</div>
+              <div className="text-5xl mb-4 text-blue-600" aria-hidden="true">⭐</div>
               <h3 className="text-2xl font-bold mb-4 text-blue-800">Valores</h3>
               <ul className="text-gray-700 space-y-2 text-left">
                 <li>✓ Innovación constante</li>
@@ -171,7 +191,7 @@ export default function Home() {
           {/* Corporate Purpose */}
           <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-700 to-blue-900 text-white p-8 rounded-lg shadow-xl">
             <h3 className="text-3xl font-bold mb-4 flex items-center">
-              <span className="mr-3">📋</span>
+              <span className="mr-3" aria-hidden="true">📋</span>
               Objeto Social
             </h3>
             <p className="text-lg leading-relaxed mb-4">
@@ -211,15 +231,15 @@ export default function Home() {
             <div className="bg-white text-gray-800 p-8 rounded-lg shadow-xl">
               <div className="space-y-4">
                 <div className="flex items-center justify-center space-x-3">
-                  <span className="text-2xl">📧</span>
+                  <span className="text-2xl" aria-hidden="true">📧</span>
                   <span className="text-lg">info@worldtech.com</span>
                 </div>
                 <div className="flex items-center justify-center space-x-3">
-                  <span className="text-2xl">📞</span>
+                  <span className="text-2xl" aria-hidden="true">📞</span>
                   <span className="text-lg">+52 (555) 123-4567</span>
                 </div>
                 <div className="flex items-center justify-center space-x-3">
-                  <span className="text-2xl">📍</span>
+                  <span className="text-2xl" aria-hidden="true">📍</span>
                   <span className="text-lg">Ciudad de México, México</span>
                 </div>
               </div>
